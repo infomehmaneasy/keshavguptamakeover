@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Manrope:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-ivory text-espresso font-sans;
+    overflow-x: hidden;
+  }
+  ::selection {
+    @apply bg-burgundy text-ivory;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-medium;
+  }
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid #682F3B;
+    outline-offset: 3px;
+  }
+  input[type='date']::-webkit-calendar-picker-indicator,
+  input[type='time']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[11px] uppercase tracking-ultra font-medium text-taupe;
+  }
+  .display-headline {
+    @apply font-display font-light leading-[1.02] tracking-tight text-espresso;
+  }
+  .section-divider {
+    @apply h-px w-16 bg-champagne;
+  }
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-3 bg-espresso text-ivory px-8 py-4 text-[12px] uppercase tracking-widest font-medium transition-all duration-300 hover:bg-burgundy hover:tracking-[0.35em];
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-3 border border-espresso/30 text-espresso px-8 py-4 text-[12px] uppercase tracking-widest font-medium transition-all duration-300 hover:border-espresso hover:bg-espresso hover:text-ivory;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 text-[12px] uppercase tracking-widest font-medium text-espresso border-b border-espresso/30 pb-1 transition-all duration-300 hover:border-burgundy hover:text-burgundy;
+  }
+  .nav-link {
+    @apply text-[12px] uppercase tracking-widest font-medium text-espresso/80 hover:text-espresso transition-colors duration-300 relative;
+  }
+  .nav-link::after {
+    content: '';
+    @apply absolute -bottom-1 left-0 h-px w-0 bg-burgundy transition-all duration-300;
+  }
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+  .form-field {
+    @apply w-full border border-espresso/15 bg-white/50 px-4 py-3 text-sm text-espresso placeholder:text-taupe/60 transition-all duration-200 focus:border-espresso focus:bg-white focus:outline-none;
+  }
+  .form-label {
+    @apply block text-[11px] uppercase tracking-widest text-taupe mb-2 font-medium;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .grain {
+    background-image: radial-gradient(rgba(33,27,25,0.03) 1px, transparent 1px);
+    background-size: 4px 4px;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
