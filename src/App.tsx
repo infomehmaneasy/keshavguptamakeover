@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import Artist from '@/components/Artist';
 import Portfolio from '@/components/Portfolio';
 import Services from '@/components/Services';
+import Pricing from '@/components/Pricing';
 import Transformation from '@/components/Transformation';
 import AppointmentSteps from '@/components/AppointmentSteps';
 import InstagramFeed from '@/components/InstagramFeed';
@@ -17,7 +18,7 @@ import BookingForm from '@/components/BookingForm';
 import { services, type Service } from '@/config/services';
 import type { PortfolioItem } from '@/config/portfolio';
 
-const sectionIds = ['home', 'about', 'services', 'portfolio', 'contact'];
+const sectionIds = ['home', 'about', 'services', 'pricing', 'portfolio', 'contact'];
 
 export default function App() {
   const [loading, setLoading] = useState(true);
@@ -82,6 +83,7 @@ export default function App() {
         <Hero onBook={() => openBooking()} onExplore={onExplore} />
         <Artist onBook={() => openBooking()} />
         <Services onBook={onBookFromService} />
+        <Pricing onBook={() => openBooking()} />
         <Transformation onPortfolio={onExplore} />
         <Portfolio onBook={onBookFromPortfolio} />
         <AppointmentSteps onBook={() => openBooking()} />

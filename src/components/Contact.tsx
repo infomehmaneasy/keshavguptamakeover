@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, ArrowRight, PhoneCall } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, ArrowRight, PhoneCall } from '@/components/icons';
 import { artist, contact, phoneLink, mailLink, whatsappLink, displayContact } from '@/config/artist';
 import { useReducedMotion } from '@/hooks/useReveal';
 

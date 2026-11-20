@@ -4,7 +4,10 @@ A responsive editorial website prototype for Keshav Gupta's makeup artistry.
 
 ## Run locally
 
+Use the Node.js version pinned in `.nvmrc` before installing dependencies:
+
 ```sh
+nvm use
 npm install
 npm run dev
 ```

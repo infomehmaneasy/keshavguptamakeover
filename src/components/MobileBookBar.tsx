@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { CalendarDays, PhoneCall } from 'lucide-react';
+import { CalendarDays, PhoneCall } from '@/components/icons';
 import { artist, contact, phoneLink } from '@/config/artist';
 
 type Props = { visible: boolean; onBook: () => void };

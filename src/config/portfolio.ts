@@ -1,15 +1,17 @@
 import type { ServiceCategory } from './services';
 
+export type PortfolioCategory = ServiceCategory | 'Colour full' | 'Groom';
+
 export type PortfolioItem = {
   id: string;
-  category: ServiceCategory;
+  category: PortfolioCategory;
   title: string;
   caption: string;
   image: string;
   span: 'feature' | 'tall' | 'wide' | 'square';
 };
 
-export const portfolioCategories: { id: ServiceCategory | 'All'; label: string }[] = [
+export const portfolioCategories: { id: PortfolioCategory | 'All'; label: string }[] = [
   { id: 'All', label: 'All Looks' },
   { id: 'Bridal', label: 'Bridal' },
   { id: 'Engagement', label: 'Engagement' },
@@ -17,6 +19,8 @@ export const portfolioCategories: { id: ServiceCategory | 'All'; label: string }
   { id: 'Party Glam', label: 'Party Glam' },
   { id: 'Soft Glam', label: 'Soft Glam' },
   { id: 'Editorial', label: 'Editorial' },
+  { id: 'Colour full', label: 'Colour full' },
+  { id: 'Groom', label: 'Groom' },
 ];
 
 export const portfolioItems: PortfolioItem[] = [

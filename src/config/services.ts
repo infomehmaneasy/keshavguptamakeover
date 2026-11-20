@@ -1,7 +1,7 @@
+import type { LucideIcon } from 'lucide-react';
 import {
   Crown, Gem, Sparkles, PartyPopper, Star, Scissors,
-  type LucideIcon,
-} from 'lucide-react';
+} from '@/components/icons';
 
 export type ServiceCategory =
   | 'Bridal'
@@ -38,7 +38,7 @@ export const services: Service[] = [
     preparation:
       'A pre-consultation is recommended to discuss your outfit, jewellery, and the overall mood you want to carry. Share inspiration images so the look is built around you, not imposed on you.',
     duration: null,
-    startingPrice: null,
+    startingPrice: '₹15,000',
     image:
       'https://images.pexels.com/photos/2531734/pexels-photo-2531734.jpeg?auto=compress&cs=tinysrgb&w=1200',
     icon: Crown,
@@ -55,7 +55,7 @@ export const services: Service[] = [
     preparation:
       'Bring references of your engagement outfit and the mood you want to set. We will refine the look together before the day.',
     duration: null,
-    startingPrice: null,
+    startingPrice: '₹10,000',
     image:
       'https://images.pexels.com/photos/35395104/pexels-photo-35395104.jpeg?auto=compress&cs=tinysrgb&w=1200',
     icon: Gem,
@@ -72,7 +72,7 @@ export const services: Service[] = [
     preparation:
       'Share your reception outfit and venue details. The look is balanced to suit both the room and the gown.',
     duration: null,
-    startingPrice: null,
+    startingPrice: '₹10,000',
     image:
       'https://images.pexels.com/photos/29354292/pexels-photo-29354292.jpeg?auto=compress&cs=tinysrgb&w=1200',
     icon: Sparkles,
@@ -89,7 +89,7 @@ export const services: Service[] = [
     preparation:
       'Tell us about the occasion and outfit so the intensity and palette match the moment.',
     duration: null,
-    startingPrice: null,
+    startingPrice: '₹3,500',
     image:
       'https://images.pexels.com/photos/18610284/pexels-photo-18610284.jpeg?auto=compress&cs=tinysrgb&w=1200',
     icon: PartyPopper,

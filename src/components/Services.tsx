@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, type Variants } from 'framer-motion';
 import { useState } from 'react';
-import { X, ArrowRight, CalendarDays } from 'lucide-react';
+import { X, ArrowRight, CalendarDays } from '@/components/icons';
 import { services } from '@/config/services';
 import type { Service } from '@/config/services';
 import { useReducedMotion } from '@/hooks/useReveal';

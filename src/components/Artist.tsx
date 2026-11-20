@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import { CalendarDays, Instagram } from 'lucide-react';
+import { CalendarDays, Instagram } from '@/components/icons';
 import { artist } from '@/config/artist';
 import { artistPortrait } from '@/config/media';
 import { useReducedMotion } from '@/hooks/useReveal';

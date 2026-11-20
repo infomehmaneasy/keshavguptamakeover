@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from '@/components/icons';
 import { useReducedMotion } from '@/hooks/useReveal';
 
 type Props = { onBook: () => void };

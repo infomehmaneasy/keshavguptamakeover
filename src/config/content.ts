@@ -27,7 +27,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: 'How do I get a price quotation?',
-    a: 'Pricing is shared after your enquiry is reviewed, because it depends on the service, occasion, location, and number of people. Please submit your details through the booking form and the artist will respond with a quotation.',
+    a: 'Published makeup and hairstyle rates are listed in the Price List. Share your event date, location, and number of people in an enquiry to confirm availability and any venue or travelling charges.',
   },
   {
     q: 'What happens after I submit an enquiry?',

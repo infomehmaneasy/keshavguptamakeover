@@ -1,4 +1,4 @@
-import { Instagram, ArrowUp, PhoneCall } from 'lucide-react';
+import { Instagram, ArrowUp, PhoneCall } from '@/components/icons';
 import { artist, contact, phoneLink, whatsappLink } from '@/config/artist';
 
 type Props = {
@@ -10,6 +10,7 @@ const links = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
+  { id: 'pricing', label: 'Pricing' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'contact', label: 'Contact' },
 ];

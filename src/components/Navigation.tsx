@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
-import { Menu, X, Instagram, CalendarDays, PhoneCall } from 'lucide-react';
+import { Menu, X, Instagram, CalendarDays, PhoneCall } from '@/components/icons';
 import { artist, contact } from '@/config/artist';
 import { phoneLink, whatsappLink } from '@/config/artist';
 import { displayContact } from '@/config/artist';
@@ -10,6 +10,7 @@ const navItems: NavItem[] = [
   { id: 'home', label: 'Home' },
   { id: 'about', label: 'About' },
   { id: 'services', label: 'Services' },
+  { id: 'pricing', label: 'Pricing' },
   { id: 'portfolio', label: 'Portfolio' },
   { id: 'contact', label: 'Contact' },
 ];
@@ -95,7 +96,7 @@ export default function Navigation({ activeSection, onBook }: Props) {
             </span>
           </button>
 
-          <nav className="hidden md:flex items-center gap-10">
+          <nav className="hidden lg:flex items-center gap-10">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -107,7 +108,7 @@ export default function Navigation({ activeSection, onBook }: Props) {
             ))}
           </nav>
 
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             {contact.phone && (
               <a
                 href={phoneLink()}
@@ -135,7 +136,7 @@ export default function Navigation({ activeSection, onBook }: Props) {
 
           <button
             ref={menuTriggerRef}
-            className="md:hidden text-espresso p-2 -mr-2"
+            className="lg:hidden text-espresso p-2 -mr-2"
             onClick={() => setOpen(true)}
             aria-label="Open menu"
             aria-expanded={open}

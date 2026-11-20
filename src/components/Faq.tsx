@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { Plus } from '@/components/icons';
 import { faqs } from '@/config/content';
 import { useReducedMotion } from '@/hooks/useReveal';
 

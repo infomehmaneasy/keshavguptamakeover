@@ -1,16 +1,15 @@
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
-import { X, ChevronLeft, ChevronRight, CalendarDays } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, CalendarDays } from '@/components/icons';
 import { portfolioItems, portfolioCategories } from '@/config/portfolio';
-import type { PortfolioItem } from '@/config/portfolio';
-import type { ServiceCategory } from '@/config/services';
+import type { PortfolioCategory, PortfolioItem } from '@/config/portfolio';
 import { useReducedMotion } from '@/hooks/useReveal';
 
 type Props = { onBook: (service: PortfolioItem) => void };
 
 export default function Portfolio({ onBook }: Props) {
   const reduced = useReducedMotion();
-  const [filter, setFilter] = useState<ServiceCategory | 'All'>('All');
+  const [filter, setFilter] = useState<PortfolioCategory | 'All'>('All');
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const filtered = portfolioItems.filter((i) => filter === 'All' || i.category === filter);
@@ -69,6 +68,7 @@ export default function Portfolio({ onBook }: Props) {
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
+              aria-pressed={filter === cat.id}
               className={`px-4 py-2 text-[11px] uppercase tracking-widest font-medium border transition-all duration-300 ${
                 filter === cat.id
                   ? 'bg-espresso text-ivory border-espresso'
@@ -123,6 +123,11 @@ export default function Portfolio({ onBook }: Props) {
               ))}
             </AnimatePresence>
           </motion.div>
+          {filtered.length === 0 && (
+            <p className="py-16 text-center font-display text-2xl text-taupe">
+              New {filter} looks are coming to the lookbook.
+            </p>
+          )}
         </LayoutGroup>
       </div>
 

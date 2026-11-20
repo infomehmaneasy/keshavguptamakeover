@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Instagram } from 'lucide-react';
+import { Instagram } from '@/components/icons';
 import { artist } from '@/config/artist';
 import { instagramPosts } from '@/config/content';
 import { useReducedMotion } from '@/hooks/useReveal';

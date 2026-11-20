@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import {
   X, Check, ChevronLeft, ChevronRight, Loader2, AlertCircle,
   CalendarDays, MessageCircle, Phone, Edit3, Copy,
-} from 'lucide-react';
+} from '@/components/icons';
 import { services } from '@/config/services';
 import {
   eventTypes, makeupStyles, contactPreferences, bookingSettings,

@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { ChevronDown, ArrowRight, Pause, Play } from 'lucide-react';
+import { ChevronDown, ArrowRight, Pause, Play } from '@/components/icons';
 import { heroPortrait, heroVideo } from '@/config/media';
 import { useReducedMotion } from '@/hooks/useReveal';
 
