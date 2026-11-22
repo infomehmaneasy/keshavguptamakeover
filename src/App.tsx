@@ -59,7 +59,7 @@ export default function App() {
 
   const onBookFromService = useCallback((s: Service) => openBooking(s.id), [openBooking]);
   const onBookFromPortfolio = useCallback((p: PortfolioItem) => {
-    const matchingService = services.find((service) => service.category === p.category);
+    const matchingService = services.find((service) => service.id === p.serviceId);
     openBooking(matchingService?.id);
   }, [openBooking]);
 

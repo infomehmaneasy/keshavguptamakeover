@@ -22,7 +22,7 @@ npm run build
 
 ## Launch configuration
 
-- The home hero video is `public/makeupvideo.mp4`; the poster image and artist portrait are managed in `src/config/media.ts`.
+- The home hero uses `public/6.m4v`, a browser-compatible copy of the supplied `public/6.MOV`; its poster and the artist portrait are managed in `src/config/media.ts`.
 - Artist phone and WhatsApp details are in `src/config/artist.ts`.
-- Service and gallery images remain editable in `src/config/services.ts` and `src/config/portfolio.ts`. Replace reference images with approved artist work before launch.
+- Service images and the artist-provided gallery media are managed in `src/config/services.ts` and `src/config/portfolio.ts`.
 - Booking runs in clearly labelled demo mode. Connect the booking service in `src/services/booking.ts` before accepting web enquiries.

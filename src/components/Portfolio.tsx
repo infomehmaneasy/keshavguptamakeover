@@ -1,6 +1,6 @@
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { useCallback, useEffect, useState } from 'react';
-import { X, ChevronLeft, ChevronRight, CalendarDays } from '@/components/icons';
+import { X, ChevronLeft, ChevronRight, CalendarDays, Play } from '@/components/icons';
 import { portfolioItems, portfolioCategories } from '@/config/portfolio';
 import type { PortfolioCategory, PortfolioItem } from '@/config/portfolio';
 import { useReducedMotion } from '@/hooks/useReveal';
@@ -37,15 +37,6 @@ export default function Portfolio({ onBook }: Props) {
     };
   }, [lightbox, closeLightbox, next, prev]);
 
-  const spanClass = (item: PortfolioItem) => {
-    switch (item.span) {
-      case 'feature': return 'col-span-2 aspect-[4/5] md:row-span-2 md:aspect-auto';
-      case 'tall': return 'aspect-[4/5] md:aspect-[3/4]';
-      case 'wide': return 'col-span-2 aspect-[4/5] md:aspect-[16/10]';
-      default: return 'aspect-[4/5] md:aspect-square';
-    }
-  };
-
   return (
     <section id="portfolio" className="py-24 md:py-36 bg-ivory grain">
       <div className="max-w-editorial mx-auto px-5 sm:px-8">
@@ -57,13 +48,13 @@ export default function Portfolio({ onBook }: Props) {
               <span className="italic text-burgundy"> a different story.</span>
             </h2>
           </div>
-          <p className="text-sm text-taupe max-w-xs">
-            Editorial reference imagery for this prototype, not verified work by the artist. Replace with approved portfolio photographs before launch.
+          <p className="text-sm leading-relaxed text-taupe max-w-xs">
+            A closer look at Keshav's artistry — from bridal celebrations to evenings in the spotlight.
           </p>
         </header>
 
         {/* Filters */}
-        <div className="flex flex-wrap gap-2 mb-10 md:mb-14">
+        <div className="flex flex-wrap justify-center gap-2 mb-10 md:mb-14">
           {portfolioCategories.map((cat) => (
             <button
               key={cat.id}
@@ -84,7 +75,7 @@ export default function Portfolio({ onBook }: Props) {
         <LayoutGroup>
           <motion.div
             layout
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 auto-rows-[minmax(0,1fr)] gap-3 md:gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-12 md:gap-x-7 md:gap-y-16"
           >
             <AnimatePresence mode="popLayout">
               {filtered.map((item, idx) => (
@@ -96,28 +87,44 @@ export default function Portfolio({ onBook }: Props) {
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: reduced ? 0 : 0.4, ease: 'easeOut' }}
                   onClick={() => setLightbox(idx)}
-                  className={`group relative overflow-hidden bg-espresso/5 ${spanClass(item)}`}
+                  aria-label={`View ${item.title}`}
+                  className="group block w-full text-left"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.caption}
-                    loading="lazy"
-                    className="w-full h-full object-cover object-[center_22%] transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <span className="absolute top-3 right-3 bg-espresso/65 px-2 py-1 text-[8px] uppercase tracking-widest text-ivory">
-                    Reference
-                  </span>
-                  <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/40 transition-colors duration-500 flex flex-col justify-end p-4 md:p-5">
-                    <div className="overflow-hidden">
-                      <motion.p className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 text-ivory text-[10px] uppercase tracking-widest mb-1">
-                        {item.category}
-                      </motion.p>
-                    </div>
-                    <div className="overflow-hidden">
-                      <motion.h3 className="translate-y-full group-hover:translate-y-0 transition-transform duration-500 delay-75 font-display text-ivory text-lg md:text-xl text-left">
-                        {item.title}
-                      </motion.h3>
-                    </div>
+                  <div className="relative aspect-[4/5] overflow-hidden bg-espresso/5">
+                    {item.media.type === 'video' ? (
+                      <>
+                        <img
+                          src={item.media.poster}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-cover object-[center_22%] transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <span className="absolute inset-0 flex items-center justify-center">
+                          <span className="grid size-12 place-items-center rounded-full border border-ivory/75 bg-espresso/35 text-ivory backdrop-blur-sm transition-transform duration-300 group-hover:scale-110">
+                            <Play size={16} fill="currentColor" strokeWidth={1.5} />
+                          </span>
+                        </span>
+                        <span className="absolute top-3 right-3 bg-espresso/65 px-2 py-1 text-[8px] uppercase tracking-widest text-ivory">
+                          Film
+                        </span>
+                      </>
+                    ) : (
+                      <img
+                        src={item.media.src}
+                        alt={item.caption}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-cover object-[center_22%] transition-transform duration-700 group-hover:scale-105"
+                      />
+                    )}
+                  </div>
+                  <div className="pt-4">
+                    <p className="eyebrow !text-[10px] !tracking-widest">{item.category}</p>
+                    <h3 className="mt-1 font-display text-2xl text-espresso transition-colors duration-300 group-hover:text-burgundy">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-taupe">{item.caption}</p>
                   </div>
                 </motion.button>
               ))}
@@ -171,14 +178,25 @@ export default function Portfolio({ onBook }: Props) {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, ease: 'easeOut' }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-5xl w-full flex flex-col"
+              className="max-w-5xl w-full max-h-[calc(100svh-2rem)] overflow-y-auto no-scrollbar flex flex-col"
             >
-              <div className="relative max-h-[72vh] overflow-hidden">
-                <img
-                  src={filtered[lightbox].image}
-                  alt={filtered[lightbox].caption}
-                  className="w-full max-h-[72vh] object-contain"
-                />
+              <div className="relative max-h-[55svh] sm:max-h-[72vh] overflow-hidden">
+                {filtered[lightbox].media.type === 'video' ? (
+                  <video
+                    src={filtered[lightbox].media.src}
+                    controls
+                    autoPlay
+                    playsInline
+                    aria-label={`${filtered[lightbox].title} video`}
+                    className="w-full max-h-[55svh] sm:max-h-[72vh] object-contain"
+                  />
+                ) : (
+                  <img
+                    src={filtered[lightbox].media.src}
+                    alt={filtered[lightbox].caption}
+                    className="w-full max-h-[55svh] sm:max-h-[72vh] object-contain"
+                  />
+                )}
               </div>
               <div className="mt-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-ivory">
                 <div className="text-left">
@@ -187,7 +205,9 @@ export default function Portfolio({ onBook }: Props) {
                   </p>
                   <h3 className="font-display text-2xl">{filtered[lightbox].title}</h3>
                   <p className="text-sm text-ivory/60 mt-1">{filtered[lightbox].caption}</p>
-                  <p className="text-[9px] uppercase tracking-widest text-champagne/70 mt-2">Editorial reference image</p>
+                  {filtered[lightbox].media.type === 'video' && (
+                    <p className="text-[9px] uppercase tracking-widest text-champagne/70 mt-2">Lookbook film</p>
+                  )}
                 </div>
                 <button
                   onClick={() => onBook(filtered[lightbox])}

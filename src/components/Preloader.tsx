@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { artist } from '@/config/artist';
-import { heroPortrait } from '@/config/media';
+import { heroPoster } from '@/config/media';
 import { useReducedMotion } from '@/hooks/useReveal';
 
 type Props = { onComplete: () => void };
@@ -36,7 +36,7 @@ export default function Preloader({ onComplete }: Props) {
       window.clearTimeout(fallback);
       finish();
     };
-    image.src = heroPortrait;
+    image.src = heroPoster;
     if (image.complete) {
       window.clearTimeout(fallback);
       finish();

@@ -1,7 +1,7 @@
 import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ChevronDown, ArrowRight, Pause, Play } from '@/components/icons';
-import { heroPortrait, heroVideo } from '@/config/media';
+import { heroPoster, heroVideo } from '@/config/media';
 import { useReducedMotion } from '@/hooks/useReveal';
 
 type Props = { onBook: () => void; onExplore: () => void };
@@ -66,25 +66,25 @@ export default function Hero({ onBook, onExplore }: Props) {
             <video
               ref={videoRef}
               src={heroVideo}
-              poster={heroPortrait}
+              poster={heroPoster}
               autoPlay={!reduced}
               muted
               loop
               playsInline
               preload="metadata"
-              aria-label="A bride having her makeup done"
+              aria-label="Makeup artistry by Keshav Gupta"
               className="w-full h-full object-cover object-[center_32%] md:object-center"
               onPlay={() => setVideoPlaying(true)}
               onPause={() => setVideoPlaying(false)}
             />
           </motion.div>
           <span className="absolute bottom-5 left-5 z-10 bg-espresso/60 px-3 py-1.5 text-[9px] uppercase tracking-widest text-ivory backdrop-blur-sm">
-            Bridal beauty, in the making
+            A look for the spotlight
           </span>
           <button
             type="button"
             onClick={toggleVideo}
-            aria-label={videoPlaying ? 'Pause bridal preparation video' : 'Play bridal preparation video'}
+            aria-label={videoPlaying ? 'Pause featured makeup video' : 'Play featured makeup video'}
             className="absolute bottom-5 right-5 z-10 flex h-10 w-10 items-center justify-center border border-ivory/60 bg-espresso/55 text-ivory backdrop-blur-sm transition-colors hover:bg-espresso/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ivory"
           >
             {videoPlaying ? <Pause size={15} /> : <Play size={15} />}
